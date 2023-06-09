@@ -24,6 +24,7 @@ export const isValid = (ast: acorn.Node): boolean => {
                 result = result && isValidMemberExpression(node)
             }
         }
+        // TODO CallExpression
     })
     return result
 }

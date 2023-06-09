@@ -1,12 +1,19 @@
-import {benchmark} from "./benchmark";
 import acorn from "acorn";
-import {isValid} from "./ast-tree-check";
-
-console.log("Hello World!")
+import {isSafe} from "./ast-blacklist-check-2";
 
 const testCode = `
-    const y = z + 1
+    const y = ![]
     `;
 
+//
+const blacklistRule = {
+    type: "UnaryExpression",
+    operator: "!",
+    argument: {
+        type: "ArrayExpression",
+        elements: []
+    }
+}
+
 const ast = acorn.parse(testCode, {ecmaVersion: 2020, ranges: true});
-console.log(`result: ${isValid(ast)}`)
+console.log(`result: ${isSafe(ast, blacklistRule)}`)
