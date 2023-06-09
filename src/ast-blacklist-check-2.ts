@@ -1,8 +1,6 @@
 import acorn, {Node as ANode} from "acorn";
 import {simple} from "acorn-walk";
 
-
-
 export type BlackListRule = { [id: string]: unknown }
 // Sample rule
 // const blacklistRule = {
